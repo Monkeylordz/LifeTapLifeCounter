@@ -29,7 +29,7 @@
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <TextBlock x:Name="CounterTitle" HorizontalAlignment="Center" Margin="193,17,592,0" TextWrapping="Wrap" Text="LifeTap Life Counter" VerticalAlignment="Top" Height="69" Width="495"  FontSize="48" FontFamily="Impact" FontStyle="Italic" TextDecorations="Underline"/>
+        <TextBlock x:Name="CounterTitle" HorizontalAlignment="Left" Margin="193,17,592,0" TextWrapping="Wrap" Text="LifeTap Life Counter" VerticalAlignment="Top" Height="69" Width="495"  FontSize="48" FontFamily="Impact" FontStyle="Italic" TextDecorations="Underline"/>
         <Rectangle x:Name="Player1ScoreFrame" HorizontalAlignment="Left" Height="580" Margin="47,121,0,0" VerticalAlignment="Top" Width="580">
             <Rectangle.Fill>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -73,8 +73,8 @@
                 <Flyout Placement="Bottom">
                     <Grid x:Name="SettingsGrid" Width="230" Height="200">
                         <TextBlock x:Name="lifeSetting" Text="Starting Life Total:" TextWrapping="Wrap" FontSize="20" FontWeight="Bold"/>
-                        <Button x:Name="LifeTotalSetting20" Content="20 Life" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,50,0,0" Height="50" Width="200" Click="LifeTotalSetting20_Click"/>
-                        <Button x:Name="LifeTotalSetting40" Content="40 Life" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,120,0,0" Height="50" Width="200"/>
+                        <RadioButton x:Name="StartingLifeOption20" Content="20 Life" HorizontalAlignment="Left" Margin="0,50,0,0" VerticalAlignment="Top" GroupName="StartingLife" IsChecked="False" Checked="StartingLifeOption20_Checked" FontSize="24" FontFamily="Arial"/>
+                        <RadioButton x:Name="StartingLifeOption40" Content="40 Life" HorizontalAlignment="Left" Margin="0,120,0,0" VerticalAlignment="Top" GroupName="StartingLife" Checked="StartingLifeOption40_Checked" FontSize="24" FontFamily="Arial"/>
                     </Grid>
                 </Flyout>
             </Button.Flyout>

@@ -25,7 +25,9 @@ namespace LifeTapLifeCounter
     {
         private const string Player1NameSettingsID = "Player1Name";
         private const string Player2NameSettingsID = "Player2Name";
-        
+        private const string StartingLifeSettingsID = "StartingLife";
+
+        int? StartingLife = null;
 
         public MainPage()
         {
@@ -46,8 +48,24 @@ namespace LifeTapLifeCounter
             }
 
             //Load Starting Life Totals
-            
+            StartingLife = localSettings.Values[StartingLifeSettingsID] as int?;
+            if (StartingLife == null)
+            {
+                StartingLifeOption20.IsChecked = true;
+                StartingLife = 20;
+            }
+            else if (StartingLife == 20)
+            {
+                StartingLifeOption20.IsChecked = true;
+            }
+            else
+            {
+                StartingLifeOption40.IsChecked = true;
+                StartingLife = 40;
+            }
 
+            Player1Score.Text = StartingLife.Value.ToString();
+            Player2Score.Text = StartingLife.Value.ToString();
         }
 
         private void TextBlock_SelectionChanged()
@@ -98,8 +116,8 @@ namespace LifeTapLifeCounter
             //Otherwise, do nothing
             if (result == ContentDialogResult.Primary)
             {
-                Player2Score.Text = "20";
-                Player1Score.Text = "20";
+                Player1Score.Text = StartingLife.Value.ToString();
+                Player2Score.Text = StartingLife.Value.ToString();
             }
         }
 
@@ -125,16 +143,25 @@ namespace LifeTapLifeCounter
 
         private void Player2NameInput_CharacterReceived(UIElement sender, CharacterReceivedRoutedEventArgs args)
         {
-            if(args.Character == '\r')
+            if (args.Character == '\r')
             {
                 FocusManager.TryMoveFocus(FocusNavigationDirection.Next);
             }
-            
+
         }
 
-        private void LifeTotalSetting20_Click(object sender, RoutedEventArgs e)
+        private void StartingLifeOption20_Checked(object sender, RoutedEventArgs e)
         {
+            StartingLife = 20;
+            ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+            localSettings.Values[StartingLifeSettingsID] = StartingLife.Value;
+        }
 
+        private void StartingLifeOption40_Checked(object sender, RoutedEventArgs e)
+        {
+            StartingLife = 40;
+            ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+            localSettings.Values[StartingLifeSettingsID] = StartingLife.Value;
         }
     }
 }
