@@ -5,7 +5,9 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Foundation.Metadata;
 using Windows.Storage;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -68,11 +70,6 @@ namespace LifeTapLifeCounter
             Player2Score.Text = StartingLife.Value.ToString();
         }
 
-        private void TextBlock_SelectionChanged()
-        {
-
-        }
-
         private void Player1Minus1_Click(object sender, RoutedEventArgs e)
         {
             var score = int.Parse(Player1Score.Text);
@@ -103,18 +100,15 @@ namespace LifeTapLifeCounter
 
         private async void ResetButton_Click(object sender, RoutedEventArgs e)
         {
-            ContentDialog resetDialog = new ContentDialog
-            {
-                Title = " Are you sure you want to reset the score?",
-                PrimaryButtonText = "Yes",
-                CloseButtonText = "No"
-            };
+            var dialog = new Windows.UI.Popups.MessageDialog("Are you sure you want to reset the score?");
 
-            ContentDialogResult result = await resetDialog.ShowAsync();
+            dialog.Commands.Add(new Windows.UI.Popups.UICommand("Yes") { Id = 0 });
+            dialog.Commands.Add(new Windows.UI.Popups.UICommand("No") { Id = 1 });
+            dialog.DefaultCommandIndex = 0;
+            dialog.CancelCommandIndex = 1;
 
-            //Resets scores to 20 if "Yes" was clicked
-            //Otherwise, do nothing
-            if (result == ContentDialogResult.Primary)
+            var result = await dialog.ShowAsync();
+            if ((int)result.Id == 0)
             {
                 Player1Score.Text = StartingLife.Value.ToString();
                 Player2Score.Text = StartingLife.Value.ToString();
@@ -141,15 +135,6 @@ namespace LifeTapLifeCounter
             }
         }
 
-        private void Player2NameInput_CharacterReceived(UIElement sender, CharacterReceivedRoutedEventArgs args)
-        {
-            if (args.Character == '\r')
-            {
-                FocusManager.TryMoveFocus(FocusNavigationDirection.Next);
-            }
-
-        }
-
         private void StartingLifeOption20_Checked(object sender, RoutedEventArgs e)
         {
             StartingLife = 20;
@@ -162,6 +147,25 @@ namespace LifeTapLifeCounter
             StartingLife = 40;
             ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
             localSettings.Values[StartingLifeSettingsID] = StartingLife.Value;
+        }
+
+        private async void Hyperlink_Click(Windows.UI.Xaml.Documents.Hyperlink sender, Windows.UI.Xaml.Documents.HyperlinkClickEventArgs args)
+        {
+            // The URI to launch
+            var uriBing = new Uri(@"mailto:leon@ferzkopp.net");
+
+            // Launch the URI
+            var success = await Windows.System.Launcher.LaunchUriAsync(uriBing);
+        }
+
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            // If we have a phone contract, hide the status bar
+            if (ApiInformation.IsApiContractPresent("Windows.Phone.PhoneContract", 1, 0))
+            {
+                var statusBar = StatusBar.GetForCurrentView();
+                await statusBar.HideAsync();
+            }
         }
     }
 }

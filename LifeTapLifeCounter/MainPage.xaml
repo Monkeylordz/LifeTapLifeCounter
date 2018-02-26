@@ -5,85 +5,102 @@
     xmlns:local="using:LifeTapLifeCounter"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d" Loaded="Page_Loaded">
 
-    <Grid x:Name="MainBackground" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup>
-                <VisualState x:Name="PhoneState">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="0" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="MainBackground.Margin" Value="0"/>
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
+    <Viewbox x:Name="AppViewbox">
+        <Grid x:Name="MainBackground" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <!--<VisualStateManager.VisualStateGroups>
+                <VisualStateGroup>
+                    <VisualState x:Name="PhoneState">
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="0" />
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Target="MainBackground.Margin" Value="0"/>
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="DesktopState">
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="720" />
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Target="MainBackground.Margin" Value="0"/>
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>-->
 
-        <Rectangle x:Name="topbarRectangle" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="1196" Margin="48,12,0,0">
-            <Rectangle.Fill>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF88CF94"/>
-                    <GradientStop Color="White" Offset="1"/>
-                </LinearGradientBrush>
-            </Rectangle.Fill>
-        </Rectangle>
-        <TextBlock x:Name="CounterTitle" HorizontalAlignment="Left" Margin="193,17,592,0" TextWrapping="Wrap" Text="LifeTap Life Counter" VerticalAlignment="Top" Height="69" Width="495"  FontSize="48" FontFamily="Impact" FontStyle="Italic" TextDecorations="Underline"/>
-        <Rectangle x:Name="Player1ScoreFrame" HorizontalAlignment="Left" Height="580" Margin="47,121,0,0" VerticalAlignment="Top" Width="580">
-            <Rectangle.Fill>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFD4C6C6" Offset="0.457"/>
-                    <GradientStop Color="#FFE66E6E" Offset="1"/>
-                    <GradientStop Color="#FFF9B2B2" Offset="0"/>
-                </LinearGradientBrush>
-            </Rectangle.Fill>
-        </Rectangle>
-        <Rectangle x:Name="Player2ScoreFrame" HorizontalAlignment="Left" Height="580" Margin="664,121,0,0" VerticalAlignment="Top" Width="580">
-            <Rectangle.Fill>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFE5E6F3" Offset="0.47"/>
-                    <GradientStop Color="#FFAFBDFB" Offset="1"/>
-                    <GradientStop Color="#FFB7C4FD" Offset="0"/>
-                </LinearGradientBrush>
-            </Rectangle.Fill>
-        </Rectangle>
-        <TextBlock x:Name="Player1Score" HorizontalAlignment="Left" Height="200" Margin="137,261,0,0" Text="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" FontFamily="Arial Black" FontSize="144" TextAlignment="Center" />
-        <TextBlock x:Name="Player2Score" HorizontalAlignment="Left" Height="200" Margin="765,261,0,0" Text="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" FontFamily="Arial Black" FontSize="144" TextAlignment="Center" />
-        <Button x:Name="Player1Minus1" Content="- 1" HorizontalAlignment="Left" Margin="108,491,0,0" VerticalAlignment="Top" Height="180" Width="190" Click="Player1Minus1_Click" FontSize="48"/>
-        <Button x:Name="Player1Plus1" Content="+ 1" HorizontalAlignment="Left" Margin="370,491,0,0" VerticalAlignment="Top" Height="180" Width="190" Click="Player1Plus1_Click" FontSize="48"/>
-        <Button x:Name="Player2Minus2" Content="- 1" HorizontalAlignment="Left" Margin="742,491,0,0" VerticalAlignment="Top" Height="180" Width="190" Click="Player2Minus2_Click" FontSize="48"/>
-        <Button x:Name="Player2Plus2" Content="+ 1" HorizontalAlignment="Left" Margin="993,491,0,0" VerticalAlignment="Top" Height="180" Width="190" Click="Player2Plus2_Click" FontSize="48"/>
-        <Button x:Name="ResetButton" Content="Reset" HorizontalAlignment="Left" Height="70" Margin="740,23,0,0" VerticalAlignment="Top" Width="200" FontSize="36" Click="ResetButton_Click"/>
-        <TextBox x:Name="Player1NameInput" HorizontalAlignment="Left" Height="60" Margin="158,144,0,0" Text="Player 1" VerticalAlignment="Top" Width="350" FontSize="36" TextAlignment="Center" LostFocus="Player1NameInput_LostFocus" MaxLength="20"/>
-        <TextBox x:Name="Player2NameInput" HorizontalAlignment="Left" Height="60" Margin="788,144,0,0" Text="Player 2" VerticalAlignment="Top" Width="350" FontSize="36" TextAlignment="Center" LostFocus="Player2NameInput_LostFocus" MaxLength="20" CharacterReceived="Player2NameInput_CharacterReceived"/>
-        <Button x:Name="HelpButton" Content="🛈" HorizontalAlignment="Left" Height="70" Margin="1140,26,0,0" VerticalAlignment="Top" Width="70" FontSize="48" FontFamily="Arial">
-            <Button.Flyout>
-                <Flyout>
-                    <Grid x:Name="HelpGrid" Width="300" Height="400" Margin="12,12,0,0">
-                        <TextBlock x:Name="HelpText" HorizontalAlignment="Left" Text="Life Tap is a counter application designed for the card game Magic: the Gathering. It can record the life totals of up to two players." TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16"/>
-                        <TextBlock x:Name="HelpText2" Text="The life totals can be changed by pressing the +1 and -1 buttons. Player names can also be changed, and will be saved. The life totals can be reset for another game by pressing the reset button. Starting life totals can be changed in the settings (gear icon)." TextWrapping="Wrap" FontSize="16" Margin="0,100,0,0"/>
-                        <TextBlock x:Name="HelpText3" Text="Feedback is greatly appreciated. You can contact me at: leon@ferzkopp.net." TextWrapping="Wrap" Margin="0,280,0,0" FontSize="16"/>
-                    </Grid>
-                </Flyout>
-            </Button.Flyout>
-        </Button>
-        <Button x:Name="SettingsButton" Content="⚙" HorizontalAlignment="Left" Height="70" Margin="1032,24,0,0" VerticalAlignment="Top" Width="70" FontSize="36">
-            <Button.Flyout>
-                <Flyout Placement="Bottom">
-                    <Grid x:Name="SettingsGrid" Width="230" Height="200">
-                        <TextBlock x:Name="lifeSetting" Text="Starting Life Total:" TextWrapping="Wrap" FontSize="20" FontWeight="Bold"/>
-                        <RadioButton x:Name="StartingLifeOption20" Content="20 Life" HorizontalAlignment="Left" Margin="0,50,0,0" VerticalAlignment="Top" GroupName="StartingLife" IsChecked="False" Checked="StartingLifeOption20_Checked" FontSize="24" FontFamily="Arial"/>
-                        <RadioButton x:Name="StartingLifeOption40" Content="40 Life" HorizontalAlignment="Left" Margin="0,120,0,0" VerticalAlignment="Top" GroupName="StartingLife" Checked="StartingLifeOption40_Checked" FontSize="24" FontFamily="Arial"/>
-                    </Grid>
-                </Flyout>
-            </Button.Flyout>
-        </Button>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="100" Margin="64,16,0,0" VerticalAlignment="Top" Width="100" Source="Assets/CounterIcon 292x292.png"/>
+            <Rectangle x:Name="topbarRectangle" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="1196" Margin="48,12,0,0">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF88CF94"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <TextBlock x:Name="CounterTitle" HorizontalAlignment="Left" Margin="193,17,592,0" TextWrapping="Wrap" Text="LifeTap Life Counter" VerticalAlignment="Top" Height="69" Width="495"  FontSize="48" FontFamily="Impact" FontStyle="Italic" />
+            <Rectangle x:Name="Player1ScoreFrame" HorizontalAlignment="Left" Height="580" Margin="47,121,0,0" VerticalAlignment="Top" Width="580">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFD4C6C6" Offset="0.457"/>
+                        <GradientStop Color="#FFE66E6E" Offset="1"/>
+                        <GradientStop Color="#FFF9B2B2" Offset="0"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Rectangle x:Name="Player2ScoreFrame" HorizontalAlignment="Left" Height="580" Margin="664,121,0,0" VerticalAlignment="Top" Width="580">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFE5E6F3" Offset="0.47"/>
+                        <GradientStop Color="#FFAFBDFB" Offset="1"/>
+                        <GradientStop Color="#FFB7C4FD" Offset="0"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <TextBlock x:Name="Player1Score" HorizontalAlignment="Left" Height="200" Margin="137,261,0,0" Text="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" FontFamily="Arial Black" FontSize="144" TextAlignment="Center" />
+            <TextBlock x:Name="Player2Score" HorizontalAlignment="Left" Height="200" Margin="765,261,0,0" Text="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" FontFamily="Arial Black" FontSize="144" TextAlignment="Center" />
+            <Button x:Name="Player1Minus1" Content="- 1" HorizontalAlignment="Left" Margin="108,491,0,0" VerticalAlignment="Top" Height="180" Width="190" Click="Player1Minus1_Click" FontSize="48"/>
+            <Button x:Name="Player1Plus1" Content="+ 1" HorizontalAlignment="Left" Margin="370,491,0,0" VerticalAlignment="Top" Height="180" Width="190" Click="Player1Plus1_Click" FontSize="48"/>
+            <Button x:Name="Player2Minus2" Content="- 1" HorizontalAlignment="Left" Margin="742,491,0,0" VerticalAlignment="Top" Height="180" Width="190" Click="Player2Minus2_Click" FontSize="48"/>
+            <Button x:Name="Player2Plus2" Content="+ 1" HorizontalAlignment="Left" Margin="993,491,0,0" VerticalAlignment="Top" Height="180" Width="190" Click="Player2Plus2_Click" FontSize="48"/>
+            <Button x:Name="ResetButton" Content="Reset" HorizontalAlignment="Left" Height="70" Margin="740,23,0,0" VerticalAlignment="Top" Width="200" FontSize="36" Click="ResetButton_Click"/>
+            <TextBox x:Name="Player1NameInput" HorizontalAlignment="Left" Height="60" Margin="158,144,0,0" Text="Player 1" VerticalAlignment="Top" Width="350" FontSize="36" TextAlignment="Center" LostFocus="Player1NameInput_LostFocus" MaxLength="20" />
+            <TextBox x:Name="Player2NameInput" HorizontalAlignment="Left" Height="60" Margin="788,144,0,0" Text="Player 2" VerticalAlignment="Top" Width="350" FontSize="36" TextAlignment="Center" LostFocus="Player2NameInput_LostFocus" MaxLength="20" />
+            <Button x:Name="HelpButton" Content="🛈" HorizontalAlignment="Left" Height="70" Margin="1140,26,0,0" VerticalAlignment="Top" Width="70" FontSize="48" FontFamily="Arial">
+                <Button.Flyout>
+                    <Flyout>
+                        <Grid x:Name="HelpGrid" Width="300" Height="400" Margin="12,12,0,0">
+                            <TextBlock x:Name="HelpText" HorizontalAlignment="Left" Text="Life Tap is a counter application designed for the card game Magic: the Gathering. It can record the life totals of up to two players." TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16"/>
+                            <TextBlock x:Name="HelpText2" Text="The life totals can be changed by pressing the +1 and -1 buttons. Player names can also be changed, and will be saved. The life totals can be reset for another game by pressing the reset button. Starting life totals can be changed in the settings (gear icon)." TextWrapping="Wrap" FontSize="16" Margin="0,100,0,0"/>
+                            <TextBlock x:Name="HelpText3" Text="Feedback is greatly appreciated. You can contact me at:" TextWrapping="Wrap" Margin="0,280,0,0" FontSize="16"/>
+                            <TextBlock x:Name="HelpText4" Margin="0,330,0,0" FontSize="16"><Hyperlink Click="Hyperlink_Click">leon@ferzkopp.net</Hyperlink></TextBlock>
+                            <!--
+                            <RichTextBlock x:Name="HelpText4" Margin="0,330,0,0" FontSize="16">
+                                <Paragraph>
+                                    <Hyperlink NavigateUri="mailto:leon@ferzkopp.net">leon@ferzkopp.net</Hyperlink>
+                                </Paragraph>
+                            </RichTextBlock>
+                            -->
+                        </Grid>
+                    </Flyout>
+                </Button.Flyout>
+            </Button>
+            <Button x:Name="SettingsButton" Content="⚙" HorizontalAlignment="Left" Height="70" Margin="1032,24,0,0" VerticalAlignment="Top" Width="70" FontSize="36">
+                <Button.Flyout>
+                    <Flyout Placement="Bottom">
+                        <Grid x:Name="SettingsGrid" Width="230" Height="200">
+                            <TextBlock x:Name="lifeSetting" Text="Starting Life Total:" TextWrapping="Wrap" FontSize="20" FontWeight="Bold"/>
+                            <RadioButton x:Name="StartingLifeOption20" Content="20 Life" HorizontalAlignment="Left" Margin="0,50,0,0" VerticalAlignment="Top" GroupName="StartingLife" IsChecked="False" Checked="StartingLifeOption20_Checked" FontSize="24" FontFamily="Arial"/>
+                            <RadioButton x:Name="StartingLifeOption40" Content="40 Life" HorizontalAlignment="Left" Margin="0,120,0,0" VerticalAlignment="Top" GroupName="StartingLife" Checked="StartingLifeOption40_Checked" FontSize="24" FontFamily="Arial"/>
+                        </Grid>
+                    </Flyout>
+                </Button.Flyout>
+            </Button>
+            <Image x:Name="image" HorizontalAlignment="Left" Height="100" Margin="64,16,0,0" VerticalAlignment="Top" Width="100" Source="Assets/CounterIcon 292x292.png"/>
 
 
-
-    </Grid>
+        </Grid>
+    </Viewbox>
 
 
 </Page>
