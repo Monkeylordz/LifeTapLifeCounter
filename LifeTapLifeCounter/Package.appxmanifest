@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="62f9333a-a4ab-417b-99db-9c5013be8393" Publisher="CN=eSkin4" Version="1.0.0.0" />
-  <mp:PhoneIdentity PhoneProductId="62f9333a-a4ab-417b-99db-9c5013be8393" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Identity Name="42170LeonSchiffler.LifeTapLifeCounter" Publisher="CN=BB72453F-F66D-4D01-BF80-037BBA5B9689" Version="1.1.0.0" />
+  <mp:PhoneIdentity PhoneProductId="2560cdbb-9612-4aae-b20a-2137828d2b17" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>LifeTapLifeCounter</DisplayName>
-    <PublisherDisplayName>eSkin4</PublisherDisplayName>
+    <DisplayName>LifeTap Life Counter</DisplayName>
+    <PublisherDisplayName>Leon Schiffler</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="LifeTapLifeCounter.App">
-      <uap:VisualElements DisplayName="LifeTapLifeCounter" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="LifeTap is a counter application designed for the card game Magic: the Gathering. It can record the life totals of up to two players." BackgroundColor="transparent">
+      <uap:VisualElements DisplayName="LifeTap Life Counter" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="LifeTap is a counter application designed for the card game Magic: the Gathering. It can record the life totals of up to two players.  LifeTap remembers player names and can reset to 20 or 40 life points." BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png">
         </uap:DefaultTile>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
