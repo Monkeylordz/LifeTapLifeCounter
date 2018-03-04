@@ -5,6 +5,12 @@ VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeTapLifeCounter", "LifeTapLifeCounter\LifeTapLifeCounter.csproj", "{604BC955-E911-484E-85B4-FD76A50C235E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Store Assets", "Store Assets", "{275C9209-4771-40C8-AFB8-96C857709248}"
+	ProjectSection(SolutionItems) = preProject
+		LifeTapLifeCounter\Store Assets\CounterIcon-1080x1080.png = LifeTapLifeCounter\Store Assets\CounterIcon-1080x1080.png
+		LifeTapLifeCounter\Store Assets\LifeTapScreenshot.PNG = LifeTapLifeCounter\Store Assets\LifeTapScreenshot.PNG
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
