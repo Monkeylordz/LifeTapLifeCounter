@@ -358,11 +358,11 @@
     <Language Code="zu-za" InMinimumRequirementSet="true" />
   </SupportedLocales>
   <ProductReservedInfo>
-    <MainPackageIdentityName>42170LeonSchiffler.LifeTapLifeCounter</MainPackageIdentityName>
+    <MainPackageIdentityName>42170LeonSchiffler.48686AE81BCCB</MainPackageIdentityName>
     <ReservedNames>
       <ReservedName>LifeTap Life Counter</ReservedName>
     </ReservedNames>
   </ProductReservedInfo>
   <AccountPackageIdentityNames />
-  <PackageInfoList LandingUrl="https://developer.microsoft.com/dashboard/Application?appId=9NVTLNSHDXC3" />
+  <PackageInfoList LandingUrl="https://developer.microsoft.com/dashboard/Application?appId=9NKSXXJSZT22" />
 </StoreAssociation>
