@@ -3,6 +3,11 @@
 ################################################################################
 
 /.vs
+/LifeTapLifeCounter/AppPackages/
+/LifeTapLifeCounter/BundleArtifacts/
 /LifeTapLifeCounter/bin
 /LifeTapLifeCounter/obj
 /LifeTapLifeCounter/*.user
+*.pfx
+Package.appxmanifest
+Package.StoreAssociation.xml
